@@ -13,3 +13,5 @@ C:\Users\cacakfi20\RiderProjects\Diary\Diary\obj\Debug\net6.0\refint\Diary.dll
 C:\Users\cacakfi20\RiderProjects\Diary\Diary\obj\Debug\net6.0\Diary.pdb
 C:\Users\cacakfi20\RiderProjects\Diary\Diary\obj\Debug\net6.0\Diary.genruntimeconfig.cache
 C:\Users\cacakfi20\RiderProjects\Diary\Diary\obj\Debug\net6.0\ref\Diary.dll
+C:\Users\cacakfi20\RiderProjects\Diary\Diary\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\cacakfi20\RiderProjects\Diary\Diary\obj\Debug\net6.0\Diary.csproj.CopyComplete
