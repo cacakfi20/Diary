@@ -1,5 +1,5 @@
 ﻿namespace Diary;
-using System
+using System.Globalization;
 
 class Diary
 {
@@ -8,27 +8,34 @@ class Diary
         /*
         string path = @"events.txt";
         File.WriteAllText(path, String.Empty);*/
-        Console.WriteLine("1 - přidat, 2 - zobrazit od nejbližších, zobrazit - nejnovější");
-        char choice = Console.ReadKey().KeyChar;
-        Console.WriteLine();
-        switch (choice)
+        bool menu = true;
+        while (menu)
         {
-            case '1':
-                var cultureInfo = new CultureInfo("de-DE");
-                Console.WriteLine("Napiš název události");
-                string name = Console.ReadLine();
-                Console.WriteLine("Napiš popis události (nepovinné)");
-                string descrip = Console.ReadLine();
-                Console.WriteLine("Napiš datum a hodinu (rok/mesic/den/hodina)");
-                string date = Console.ReadLine();
-                
-                MainClass.Save();
-                break;
-            case '2':
-                MainClass.Read();
-                break;
-            case '3':
-                break;
+            Console.WriteLine("1 - přidat, 2 - zobrazit od nejbližších, zobrazit - nejnovější");
+            char choice = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            switch (choice)
+            {
+                case '1':
+                    var cultureInfo = new CultureInfo("de-DE");
+                    Console.WriteLine("Napiš název události");
+                    string name = Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("Napiš popis události (nepovinné)");
+                    string descrip = Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("Napiš datum (den mesic rok)");
+                    string date = Console.ReadLine();
+                    Console.Clear();
+                    DateTime datee = DateTime.Parse(date, cultureInfo, DateTimeStyles.NoCurrentDateDefault);
+                    MainClass.Save(name, descrip, datee);
+                    break;
+                case '2':
+                    MainClass.Read();
+                    break;
+                case '3':
+                    break;
+            }
         }
     }
 }

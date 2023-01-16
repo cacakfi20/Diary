@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Diary;
 
 public class MainClass
 {
-    public static void Save()
+    public static void Save(string name, string descrip, DateTime datum)
     {
         JObject json = new JObject();
         int x = 0;
@@ -42,8 +43,8 @@ public class MainClass
             Console.WriteLine("soubor je prázdný");
         }*/
 
-        DateTime date = new DateTime(2020, 7, 15, 7, 0, 0);
-        Event eve = new Event(x, "chlae", "xsawd", date);
+        //DateTime date = new DateTime(2020, 7, 15, 7, 0, 0);
+        Event eve = new Event(x, name, descrip, datum);
         json.Add(new JProperty(eve.Id.ToString(), eve.Name, eve.Description, eve.Date));
 
         File.WriteAllText(@"events.txt", json.ToString());
@@ -60,7 +61,10 @@ public class MainClass
             {
                 string json = r.ReadToEnd();
                 dynamic array = JsonConvert.DeserializeObject(json);
-                
+                Console.WriteLine(array);
+                Event eve = JsonSerializer.Deserialize<Event>(json);
+                Console.WriteLine(eve.Id);
+                /*
                 foreach(var item in array)
                 {
                     foreach (var co in item)
@@ -71,7 +75,7 @@ public class MainClass
                             Console.WriteLine(c);
                         }
                     }
-                }
+                }*/
             }
         }
         else
