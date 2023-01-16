@@ -1,5 +1,5 @@
 ﻿namespace Diary;
-
+using System
 
 class Diary
 {
@@ -14,6 +14,14 @@ class Diary
         switch (choice)
         {
             case '1':
+                var cultureInfo = new CultureInfo("de-DE");
+                Console.WriteLine("Napiš název události");
+                string name = Console.ReadLine();
+                Console.WriteLine("Napiš popis události (nepovinné)");
+                string descrip = Console.ReadLine();
+                Console.WriteLine("Napiš datum a hodinu (rok/mesic/den/hodina)");
+                string date = Console.ReadLine();
+                
                 MainClass.Save();
                 break;
             case '2':
@@ -22,7 +30,6 @@ class Diary
             case '3':
                 break;
         }
-        MainClass.Save();
     }
 }
 

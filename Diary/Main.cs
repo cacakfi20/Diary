@@ -13,7 +13,6 @@ public class MainClass
         var f = new FileInfo(path);
         if (f.Length != 0)
         {
-            Console.WriteLine("soubor je prázdný");
             using (StreamReader r = new StreamReader(@"events.txt"))
             {
                 string jsonn = r.ReadToEnd();
@@ -36,33 +35,48 @@ public class MainClass
                     }
                 }
             }
-        }
+            File.WriteAllText(path, String.Empty);
+        }/*
+        else
+        {
+            Console.WriteLine("soubor je prázdný");
+        }*/
 
         DateTime date = new DateTime(2020, 7, 15, 7, 0, 0);
-        Event eve = new Event(x, "cotijemore", "xsawd", date);
+        Event eve = new Event(x, "chlae", "xsawd", date);
         json.Add(new JProperty(eve.Id.ToString(), eve.Name, eve.Description, eve.Date));
-        
-        //string json = $"{{Name: {eve.Name}, Description: {eve.Description}, Date: {eve.Date}}}";
-        
+
         File.WriteAllText(@"events.txt", json.ToString());
-/*
-        using (StreamWriter file = File.CreateText(@"events.txt"))
-        using (JsonTextWriter writer = new JsonTextWriter(file))
-        {
-            json.WriteTo(writer);
-        }*/
+
     }
 
     public static void Read()
     {
-        using (StreamReader r = new StreamReader(@"events.txt"))
+        string path = @"events.txt";
+        var f = new FileInfo(path);
+        if (f.Length != 0)
         {
-            string json = r.ReadToEnd();
-            dynamic array = JsonConvert.DeserializeObject(json);
-            foreach(var item in array)
+            using (StreamReader r = new StreamReader(@"events.txt"))
             {
-                Console.WriteLine(item);
+                string json = r.ReadToEnd();
+                dynamic array = JsonConvert.DeserializeObject(json);
+                
+                foreach(var item in array)
+                {
+                    foreach (var co in item)
+                    {
+                        Console.WriteLine("-----------");
+                        foreach (var c in co)
+                        {
+                            Console.WriteLine(c);
+                        }
+                    }
+                }
             }
+        }
+        else
+        {
+            Console.WriteLine("Nemáte žádné akce");
         }
     }   
 }
