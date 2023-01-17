@@ -6,12 +6,17 @@ namespace Diary;
 
 public class MainClass
 {
+    
     public static void Save(string name, string descrip, DateTime datum)
     {
         JObject json = new JObject();
         int x = 0;
         string path = @"events.txt";
         var f = new FileInfo(path);
+        if (!File.Exists(path))
+        {
+            File.Create(path).Dispose();
+        }
         if (f.Length != 0)
         {
             using (StreamReader r = new StreamReader(@"events.txt"))
@@ -37,17 +42,18 @@ public class MainClass
                 }
             }
             File.WriteAllText(path, String.Empty);
-        }/*
+        }
         else
         {
             Console.WriteLine("soubor je prázdný");
-        }*/
+        }
 
         //DateTime date = new DateTime(2020, 7, 15, 7, 0, 0);
         Event eve = new Event(x, name, descrip, datum);
-        json.Add(new JProperty(eve.Id.ToString(), eve.Name, eve.Description, eve.Date));
+        //json.Add(new JProperty(eve.Id.ToString(), eve.Name, eve.Description, eve.Date));
+        string result = JsonConvert.SerializeObject(eve);
 
-        File.WriteAllText(@"events.txt", json.ToString());
+        File.WriteAllText(@"events.txt", result);
 
     }
 
@@ -55,16 +61,18 @@ public class MainClass
     {
         string path = @"events.txt";
         var f = new FileInfo(path);
+        List<Event> events = new List<Event>(); 
         if (f.Length != 0)
         {
             using (StreamReader r = new StreamReader(@"events.txt"))
             {
-                string json = r.ReadToEnd();
+                string json = r.ReadLine();
                 dynamic array = JsonConvert.DeserializeObject(json);
                 Console.WriteLine(array);
                 Event eve = JsonSerializer.Deserialize<Event>(json);
                 Console.WriteLine(eve.Id);
-                /*
+                Console.WriteLine(eve.Date);
+/*
                 foreach(var item in array)
                 {
                     foreach (var co in item)
