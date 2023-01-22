@@ -14,8 +14,9 @@ class Diary
             Console.WriteLine("1 - přidat událost");
             Console.WriteLine("2 - zobrazit od nejbližších");
             Console.WriteLine("3 - zobrazit nejnovější");
-            Console.WriteLine("4 - vyhledat podle jména");
-            Console.WriteLine("5 - smazat událost");
+            Console.WriteLine("4 - zobrazit zítřejší akce");
+            Console.WriteLine("5 - vyhledat podle jména");
+            Console.WriteLine("6 - smazat událost");
             char choice = Console.ReadKey().KeyChar;
             Console.WriteLine();
             switch (choice)
@@ -67,16 +68,17 @@ class Diary
                     break;
                 case '4':
                     Console.Clear();
+                    MainClass.Read_By_Tomm_Date();
+                    break;
+                case '5':
+                    Console.Clear();
                     Console.WriteLine("Jakou událost chceš vyhledat?");
                     string eve = Console.ReadLine();
                     MainClass.Read_By_Name(eve);
                     break;
-                case '5':
+                case '6':
                     Console.Clear();
-                    Console.WriteLine("Napiš id události, kterou chceš smazat");
-                    string id = Console.ReadLine();
-                    int idd = int.Parse(id);
-                    MainClass.Delete(idd);
+                    MainClass.Delete();
                     break;
             }
         }

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cacakfi20\\RiderProjects\\Diary\\Diary\\Diary.csproj": {}
+    "C:\\Users\\filac\\RiderProjects\\Diary\\Diary\\Diary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cacakfi20\\RiderProjects\\Diary\\Diary\\Diary.csproj": {
+    "C:\\Users\\filac\\RiderProjects\\Diary\\Diary\\Diary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cacakfi20\\RiderProjects\\Diary\\Diary\\Diary.csproj",
+        "projectUniqueName": "C:\\Users\\filac\\RiderProjects\\Diary\\Diary\\Diary.csproj",
         "projectName": "Diary",
-        "projectPath": "C:\\Users\\cacakfi20\\RiderProjects\\Diary\\Diary\\Diary.csproj",
-        "packagesPath": "C:\\Users\\cacakfi20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cacakfi20\\RiderProjects\\Diary\\Diary\\obj\\",
+        "projectPath": "C:\\Users\\filac\\RiderProjects\\Diary\\Diary\\Diary.csproj",
+        "packagesPath": "C:\\Users\\filac\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\filac\\RiderProjects\\Diary\\Diary\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cacakfi20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\filac\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

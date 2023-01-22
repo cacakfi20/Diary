@@ -178,7 +178,7 @@ public class MainClass
         }
     }
 
-    public static void Delete(int id)
+    public static void Delete()
     {
         string path = @"events.txt";
         List<string> events = new List<string>();
@@ -186,7 +186,7 @@ public class MainClass
         List<Event> events_event = new List<Event>();
         StreamReader sr = new StreamReader(path);
         string line;
-        
+
         while ((line = sr.ReadLine()) != null)
         {
             events.Add(line);
@@ -199,7 +199,20 @@ public class MainClass
             events_event.Add(aaa);
         }
         
-        events_event = events_event.Where(a => a.Id != id).ToList();
+        foreach (var eve in events_event)
+        {
+            Console.WriteLine(eve.Id);
+            Console.WriteLine(eve.Name);
+            Console.WriteLine(eve.Description);
+            Console.WriteLine(eve.Date);
+            Console.WriteLine("-----------");
+        }
+        
+        Console.WriteLine("Napiš id události, kterou chceš smazat");
+        string id = Console.ReadLine();
+        int idd = int.Parse(id);
+        
+        events_event = events_event.Where(a => a.Id != idd).ToList();
         
         foreach (var eve in events_event)
         {
@@ -214,5 +227,54 @@ public class MainClass
         }
         sw.Close();
     }
+    
+    public static void Read_By_Tomm_Date()
+    {
+        string path = @"events.txt";
+        var f = new FileInfo(path);
+        List<string> events = new List<string>();
+        List<Event> events_event = new List<Event>();
+        if (f.Length != 0)
+        {
+
+            StreamReader sr = new StreamReader(path);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                events.Add(line);
+            }
+            sr.Close();
+
+            foreach (var a in events)
+            {
+                Event aaa = JsonConvert.DeserializeObject<Event>(a);
+                events_event.Add(aaa);
+            }
+
+            int x = 0;
+            foreach (var eve in events_event)
+            {
+                if (eve.Date == DateTime.Today.AddDays(1))
+                {
+                    Console.WriteLine(eve.Id);
+                    Console.WriteLine(eve.Name);
+                    Console.WriteLine(eve.Description);
+                    Console.WriteLine(eve.Date);
+                    Console.WriteLine("-----------");
+                    x++;
+                }
+            }
+
+            if (x == 0)
+            {
+                Console.WriteLine("Nenašli jsme tuto událost");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Nemáte žádné akce");
+        }
+    }
+   
 }
 
